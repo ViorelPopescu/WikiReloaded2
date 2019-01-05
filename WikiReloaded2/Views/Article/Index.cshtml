@@ -13,6 +13,12 @@
     <br />
     <br />
     @Html.ActionLink("Edit", "Edit", "Article", new { id = article.Id }, null)
+    <br />
+    if (this.User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Delete", "Delete", "Article", new { id = article.Id }, null)
+    }
     <hr />
     <br />
 }
+/**/

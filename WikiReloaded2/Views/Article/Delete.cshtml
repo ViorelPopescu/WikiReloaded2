@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Please confirm</h2>
+<br />
+<form method="post" action="Delete">
+    <input type="hidden" name="id" value="@ViewBag.Id" />
+    <input type="hidden" name="confirm" value="true" />
+    <input type="submit" value="Confirm" />
+</form>

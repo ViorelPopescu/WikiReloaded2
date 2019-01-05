@@ -103,11 +103,18 @@ namespace WikiReloaded2.Controllers
             }
         }
 
-        [HttpDelete]
-        [Authorize(Roles = "Editor,Administrator")]
         public ActionResult Delete(int id)
         {
-            Article article = db.Articles.Find(id);
+            ViewBag.Id = id;
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Editor,Administrator")]
+        public ActionResult Delete(int id, bool confirm)
+        {
+            Debug.WriteLine("ok");
+            Article article = db.Articles.Find(id.ToString());
             db.Articles.Remove(article);
             db.SaveChanges();
             return RedirectToAction("Index");

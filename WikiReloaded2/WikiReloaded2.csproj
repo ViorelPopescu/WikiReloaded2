@@ -251,6 +251,7 @@
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Category\New.cshtml" />
     <Content Include="Views\Article\ShowCategory.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
