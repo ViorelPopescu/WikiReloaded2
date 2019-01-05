@@ -15,10 +15,10 @@
         <br />
         <textarea id="TextArea1" rows="20" cols="200" name="content"></textarea>
         <br />
-        <select id="Select1">
-            @foreach (var category in ViewBag.Categories)
+        <select id="Select1" name="category">
+            @foreach (var category in @ViewBag.Categories)
             {
-                <option>category.name</option>
+                <option>@category.name</option>
                 <br />
             }
         </select>

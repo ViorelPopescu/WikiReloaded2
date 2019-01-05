@@ -3,5 +3,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<p>Categories</p>
+<h2>Categories</h2>
+@Html.ActionLink("Add category", "New", "Category")
+@foreach (var category in ViewBag.Categories)
+{
+    <h4>@category.name</h4>
+    @Html.ActionLink("Delete", "Delete", "Category")
+    <hr />
+    <br />
+}

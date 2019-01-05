@@ -12,6 +12,7 @@ namespace WikiReloaded2.Models
         [Key]
         public string Id { get; set; }
         public string name { get; set; }
+        public string category { get; set; }
         [AllowHtml]
         public string content { get; set; }
 

@@ -8,6 +8,7 @@
 @foreach (var article in ViewBag.Articles)
 {
     <h4>@article.name</h4>
+    <h5>Category: @article.category</h5>
     <p>@Html.Raw(article.content)</p>
     <br />
     <br />
