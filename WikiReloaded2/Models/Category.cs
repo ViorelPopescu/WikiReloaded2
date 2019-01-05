@@ -10,5 +10,6 @@ namespace WikiReloaded2.Models
     {
         [Key]
         public string Id { get; set; }
+        public string name { get; set; }
     }
 }

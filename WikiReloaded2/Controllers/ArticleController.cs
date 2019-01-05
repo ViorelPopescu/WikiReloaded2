@@ -32,6 +32,10 @@ namespace WikiReloaded2.Controllers
 
         public ActionResult New()
         {
+            var categories = from category in db.Categories
+                           orderby category.name
+                           select category;
+            ViewBag.Categories = categories;
             return View();
         }
         [HttpPost]
