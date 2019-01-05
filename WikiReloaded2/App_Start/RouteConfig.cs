@@ -21,8 +21,8 @@ namespace WikiReloaded2
 
             routes.MapRoute(
                  name: "Article",
-                 url: "{controller}/{action}",
-                 defaults: new { controller = "Article", action = "Index" }
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Article", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

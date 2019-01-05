@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<h3>Here you can edit the article</h3>
+<div>
+    <form method="post" action="Edit">
+        <label>Title</label>
+        <br />
+        <input id="Text1" type="text" name="name" value="@ViewBag.Article.name"/>
+        <br /><br />
+        <label>Article</label>
+        <br />
+        <textarea id="TextArea1" rows="20" cols="200" name="content">@ViewBag.Article.content</textarea>
+        <br />
+        <input type="hidden" name="id" value="@ViewBag.Article.Id"/>
+        <input type="submit" value="Publish" />
+    </form>
+</div>

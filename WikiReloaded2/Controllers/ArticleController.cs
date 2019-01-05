@@ -13,7 +13,7 @@ namespace WikiReloaded2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Article
-        private Int64 id = 0;
+        private Int64 id = 1;
         public ActionResult Index()
         {
             var articles = from article in db.Articles
@@ -56,28 +56,35 @@ namespace WikiReloaded2.Controllers
                 
                 return View();
             }
-        }        public ActionResult Edit(int id)
+        }        public ActionResult Edit(string id)
         {
             Article article = db.Articles.Find(id);
             ViewBag.Article = article;
             return View();
         }
 
-        [HttpPut]
-        public ActionResult Edit(int id, Article requestArticle)
+        [HttpPost]
+        public ActionResult Edit(int id, string name, string content)
         {
+            Debug.WriteLine("ok1");
+       
             try
             {
-                Article article = db.Articles.Find(id);
+                Article article = db.Articles.Find(id.ToString());
+                Debug.WriteLine("ok2");
                 if (TryUpdateModel(article))
                 {
-                    article.name = requestArticle.name;
+                    Debug.WriteLine("ok3");
+                    article.name = name;
+                    article.content = content;
+                    Debug.WriteLine("ok4");
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");
             }
             catch (Exception e)
             {
+                Debug.WriteLine(":(");
                 return View();
             }
         }
