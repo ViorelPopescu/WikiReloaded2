@@ -23,6 +23,16 @@ namespace WikiReloaded2.Controllers
             return View();
         }
 
+        public ActionResult ShowCategory(string category)
+        {
+            var articles = from article in db.Articles
+                           where article.category == category
+                           orderby article.name
+                           select article;
+            ViewBag.Articles = articles;
+            return View();
+        }
+
         public ActionResult Show(int id)
         {
             Article article = db.Articles.Find(id);

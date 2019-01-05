@@ -1,14 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowCategory";
 }
 
-<h2>Index</h2>
+<h2>ShowCategory</h2>
 
 @foreach (var article in ViewBag.Articles)
 {
     <h4>@article.name</h4>
-    <h5>Category: @article.category (@Html.ActionLink("Go to category", "ShowCategory", "Article", new { category = article.category }, null))</h5>
     <p>@Html.Raw(article.content)</p>
     <br />
     <br />
