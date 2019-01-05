@@ -18,6 +18,18 @@ namespace WikiReloaded2
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                 name: "Article",
+                 url: "{controller}/{action}",
+                 defaults: new { controller = "Article", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "Category",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Category", action = "Index" }
+            );
         }
     }
 }
