@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "ManageAccounts";
+}
+
+<h2>ManageAccounts</h2>
+@Html.ActionLink("Add category", "New", "Category")
+@foreach (var user in ViewBag.Users)
+{
+    <h4>@user.Email</h4>
+    <p>Change role</p>
+    <p>Delete</p>
+    <hr />
+    <br />
+}

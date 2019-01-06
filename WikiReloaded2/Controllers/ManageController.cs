@@ -15,6 +15,7 @@ namespace WikiReloaded2.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -331,6 +332,13 @@ namespace WikiReloaded2.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        public ActionResult ManageAccounts()
+        {
+            var users = UserManager.Users;
+            ViewBag.Users = users;
+            return View();
         }
 
 #region Helpers
