@@ -85,6 +85,7 @@ namespace WikiReloaded2.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(int id, string name, string content)
         {
             Debug.WriteLine("ok1");
