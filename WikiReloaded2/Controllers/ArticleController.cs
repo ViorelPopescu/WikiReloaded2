@@ -48,13 +48,17 @@ namespace WikiReloaded2.Controllers
             ViewBag.Categories = categories;
             return View();
         }
+        public string generateID()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
+
         [HttpPost]
         public ActionResult New(Article article)
         {
             try
             {
-                article.Id = id.ToString();
-                id++;
+                article.Id = generateID();
                 db.Articles.Add(article);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,7 +74,9 @@ namespace WikiReloaded2.Controllers
                 
                 return View();
             }
-        }        public ActionResult Edit(string id)
+        }
+
+        public ActionResult Edit(string id)
         {
             Article article = db.Articles.Find(id);
             ViewBag.Article = article;
