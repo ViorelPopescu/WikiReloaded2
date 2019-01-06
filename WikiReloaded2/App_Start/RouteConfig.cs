@@ -30,6 +30,12 @@ namespace WikiReloaded2
                 url: "{controller}/{action}",
                 defaults: new { controller = "Category", action = "Index" }
             );
+
+            routes.MapRoute(
+                name: "Manage",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Manage", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

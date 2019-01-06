@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -341,7 +342,34 @@ namespace WikiReloaded2.Controllers
             return View();
         }
 
-#region Helpers
+        public ActionResult ChangeRole(string id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangeRole(string id, string role)
+        {
+            Debug.WriteLine("ok1");
+            Debug.WriteLine(id);
+            Debug.WriteLine(role);
+            var roles = new string[] { "User", "Editor", "Administrator"};
+            foreach (var r in roles)
+            {
+                var ok = UserManager.IsInRole(id, r);
+                if (ok)
+                {
+                    UserManager.RemoveFromRole(id, r);
+                }
+            }
+            Debug.WriteLine("ok3");
+            UserManager.AddToRole(id, role);
+            Debug.WriteLine("ok4");
+            return View();
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

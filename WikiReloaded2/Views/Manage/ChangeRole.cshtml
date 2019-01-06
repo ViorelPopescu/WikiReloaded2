@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "ChangeRole";
+}
+
+<h2>Change Role</h2>
+<form method="post" action="ChangeRole">
+    <select id="Select1" name="role">
+        <option>User</option>
+        <option>Editor</option>
+        <option>Administrator</option>
+    </select>
+    <br />
+    <br />
+    <input type="hidden" name="id" value="@ViewBag.Id"/>
+    <input type="submit" value="Change Role" />
+</form>

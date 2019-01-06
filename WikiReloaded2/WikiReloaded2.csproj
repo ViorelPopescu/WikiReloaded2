@@ -253,6 +253,7 @@
     <Content Include="Views\Article\ShowCategory.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
     <Content Include="Views\Manage\ManageAccounts.cshtml" />
+    <Content Include="Views\Manage\ChangeRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
