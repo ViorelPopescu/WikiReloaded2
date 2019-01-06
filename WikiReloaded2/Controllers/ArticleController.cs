@@ -48,6 +48,7 @@ namespace WikiReloaded2.Controllers
             ViewBag.Categories = categories;
             return View();
         }
+
         public string generateID()
         {
             return Guid.NewGuid().ToString("N");

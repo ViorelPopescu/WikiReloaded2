@@ -26,13 +26,18 @@ namespace WikiReloaded2.Controllers
         {
             return View();
         }
+
+        public string generateID()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
+
         [HttpPost]
         public ActionResult New(Category category)
         {
             try
             {
-                category.Id = id.ToString();
-                id++;
+                category.Id = generateID();
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
