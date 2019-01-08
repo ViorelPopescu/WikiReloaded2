@@ -4,7 +4,26 @@
 }
 
 <h2>Index</h2>
-
+<form method="post" action="/Article/Index">
+    <label>Search</label>
+    <input type="hidden" name="sort" value="3" />
+    <input type="hidden" name="act" value="1" />
+    <input type="text" name="search" />
+    <input type="submit" value="search" />
+</form>
+<br />
+<form method="post" action="/Article/Index">
+    <input type="hidden" name="sort" value="1" />
+    <input type="hidden" name="act" value="2" />
+    <input type="hidden" name="search" value="becali" />
+    <input type="submit" value="Sort by name" />
+</form>
+<form method="post" action="/Article/Index">
+    <input type="hidden" name="sort" value="2" />
+    <input type="hidden" name="act" value="2" />
+    <input type="hidden" name="search" value="becali" />
+    <input type="submit" value="Sort by category" />
+</form>
 @foreach (var article in ViewBag.Articles)
 {
     <h4>@article.name</h4>

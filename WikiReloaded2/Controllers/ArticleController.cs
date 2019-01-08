@@ -23,6 +23,37 @@ namespace WikiReloaded2.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(int sort, string search, int act)
+        {
+            Debug.WriteLine(sort);
+            Debug.WriteLine(search);
+            Debug.WriteLine(act);
+            if (act == 1)
+            {
+                Debug.WriteLine(search);
+                var articles = from article in db.Articles
+                               where article.name.Contains(search)
+                               orderby article.name
+                               select article;
+                Debug.WriteLine(articles);
+                ViewBag.Articles = articles;
+            }
+            else if (act == 2)
+            {
+                var articles = from article in db.Articles
+                               orderby article.name
+                               select article;
+                if (sort == 2)
+                {
+                    articles = from article in db.Articles
+                               orderby article.category
+                               select article;
+                }
+                ViewBag.Articles = articles;
+            }
+            return View();
+        }
         public ActionResult ShowCategory(string category)
         {
             var articles = from article in db.Articles
@@ -89,7 +120,7 @@ namespace WikiReloaded2.Controllers
         public ActionResult Edit(int id, string name, string content)
         {
             Debug.WriteLine("ok1");
-       
+            
             try
             {
                 Article article = db.Articles.Find(id.ToString());
@@ -111,7 +142,7 @@ namespace WikiReloaded2.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             ViewBag.Id = id;
             return View();
@@ -119,10 +150,10 @@ namespace WikiReloaded2.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Editor,Administrator")]
-        public ActionResult Delete(int id, bool confirm)
+        public ActionResult Delete(string id, bool confirm)
         {
             Debug.WriteLine("ok");
-            Article article = db.Articles.Find(id.ToString());
+            Article article = db.Articles.Find(id);
             db.Articles.Remove(article);
             db.SaveChanges();
             return RedirectToAction("Index");
